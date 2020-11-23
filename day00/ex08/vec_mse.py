@@ -6,7 +6,7 @@
 #    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 13:42:35 by ciglesia          #+#    #+#              #
-#    Updated: 2020/11/23 14:36:11 by ciglesia         ###   ########.fr        #
+#    Updated: 2020/11/23 19:14:19 by ciglesia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent.absolute()))
 import ex04.dot as d
+import ex00.sum as s
 
 def vec_mse(y, y_hat):
     """

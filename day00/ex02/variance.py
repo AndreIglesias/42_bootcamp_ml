@@ -6,7 +6,7 @@
 #    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/22 23:53:26 by ciglesia          #+#    #+#              #
-#    Updated: 2020/11/23 11:58:39 by ciglesia         ###   ########.fr        #
+#    Updated: 2020/11/23 19:11:18 by ciglesia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,13 +27,13 @@ def variance(x):
     Raises:
     This function should not raise any Exception.
     """
-    if (not x.any()):
+    if (not s.elements(x)):
         return (None)
     mean = m.mean(x)
     return (s.sum_(x, lambda X: (X - mean)**2) / len(x))
 
 if __name__ == "__main__":
     import numpy as np
-    print("X = np.array([0, 15, -9, 7, 12, 3, -21])\variance(X)")
+    print("X = np.array([0, 15, -9, 7, 12, 3, -21])\nvariance(X)")
     X = np.array([0, 15, -9, 7, 12, 3, -21])
     print(variance(X))

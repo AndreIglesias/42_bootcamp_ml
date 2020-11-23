@@ -6,7 +6,7 @@
 #    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 00:09:52 by ciglesia          #+#    #+#              #
-#    Updated: 2020/11/23 11:58:42 by ciglesia         ###   ########.fr        #
+#    Updated: 2020/11/23 19:11:46 by ciglesia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent.absolute()))
 import ex02.variance as v
+import ex00.sum as s
 
 def std(x):
     """
@@ -28,7 +29,7 @@ def std(x):
     Raises:
     This function should not raise any Exception.
     """
-    if (not x.any()):
+    if (not s.elements(x)):
         return (None)
     return (np.sqrt(v.variance(x)))
 

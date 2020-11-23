@@ -6,7 +6,7 @@
 #    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/22 21:03:12 by ciglesia          #+#    #+#              #
-#    Updated: 2020/11/23 11:58:31 by ciglesia         ###   ########.fr        #
+#    Updated: 2020/11/23 19:09:13 by ciglesia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ def mean(x):
     Raises:
     This function should not raise any Exception.
     """
-    if (not x.any()):
+    if (not s.elements(x)):
         return (None)
     return (s.sum_(x, lambda X: X) / len(x))
 

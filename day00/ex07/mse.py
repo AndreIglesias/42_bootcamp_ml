@@ -6,7 +6,7 @@
 #    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 12:58:02 by ciglesia          #+#    #+#              #
-#    Updated: 2020/11/23 13:10:58 by ciglesia         ###   ########.fr        #
+#    Updated: 2020/11/23 19:10:35 by ciglesia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ def mse(y, y_hat):
     Raises:
     This function should not raise any Exception.
     """
-    if (not y.any() or not y_hat.any()):
+    if (not s.elements(y) or not s.elements(y_hat)):
         return (None)
     f = s.sum_(np.array(list((x - y)**2 for x, y in zip(y, y_hat))), lambda l: l)
     if (f != None):
