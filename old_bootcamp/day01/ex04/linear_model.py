@@ -6,7 +6,7 @@
 #    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/25 13:01:53 by ciglesia          #+#    #+#              #
-#    Updated: 2020/11/25 13:01:54 by ciglesia         ###   ########.fr        #
+#    Updated: 2020/11/27 00:37:12 by ciglesia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ from sklearn.metrics import mean_squared_error
 import pandas as pd
 import numpy as np
 
+import matplotlib.pyplot as pyplot
+
 data = pd.read_csv("../resources/are_blue_pills_magics.csv")
 Xpill = np.array(data["Micrograms"]).reshape(-1,1)
 Yscore = np.array(data["Score"]).reshape(-1,1)
@@ -28,6 +30,17 @@ linear_model2 = MyLR(np.array([[89.0], [-6]]))
 Y_model1 = linear_model1.predict_(Xpill)
 Y_model2 = linear_model2.predict_(Xpill)
 
+
+pyplot.scatter(Xpill, Yscore, label='Ex04')
+pyplot.plot(Xpill, Y_model1, color='g')
+pyplot.scatter(Xpill, Y_model1, color='g')
+
+pyplot.plot(Xpill, Y_model2, color='g')
+pyplot.xlabel('Blue pills (in micrograms)')
+pyplot.ylabel('Space driving score')
+pyplot.title('Ex04')
+pyplot.legend()
+pyplot.show()
 
 print(m.mse(linear_model1.predict_(Xpill), Yscore))
 # 57.60304285714282

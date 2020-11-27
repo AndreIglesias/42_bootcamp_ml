@@ -6,7 +6,7 @@
 #    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/25 11:57:40 by ciglesia          #+#    #+#              #
-#    Updated: 2020/11/25 11:57:44 by ciglesia         ###   ########.fr        #
+#    Updated: 2020/11/26 22:13:48 by ciglesia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,20 @@ import day00.ex00.sum as s
 import day00.ex06.mat_mat_prod  as m
 import day00.ex05.mat_vec_prod  as v
 import numpy as np
+import time
+
+def progressbar(it, prefix="", size=60, file=sys.stdout):
+    count = len(it)
+    def show(j):
+        x = int(size*j/count)
+        file.write("%s[%s%s] %i/%i\r" % (prefix, "#"*x, "."*(size-x), j, count))
+        file.flush()
+    show(0)
+    for i, item in enumerate(it):
+        yield item
+        show(i+1)
+    file.write("\n")
+    file.flush()
 
 class MyLinearRegression():
     """
@@ -33,7 +47,7 @@ class MyLinearRegression():
             This method should noot raise any Exception.
         """
         self.theta = np.array(theta)
-        
+
     def predict_(self, X):
         """
         Description:
@@ -53,7 +67,7 @@ class MyLinearRegression():
             return (v.mat_vec_prod(np.append(np.full((len(X),1), fill_value=1), X, axis=1), (self.theta)))
         except:
             return (None)
-        
+
     def cost_elem_(self, X, Y):
         """
         Description:
@@ -73,7 +87,7 @@ class MyLinearRegression():
             return (np.power(np.subtract(self.predict_(X), Y),2) / (2*len(Y)))
         except:
             return (None)
-        
+
     def cost_(self, X, Y):
         """
         Description:
@@ -91,7 +105,7 @@ class MyLinearRegression():
             return (s.sum_(self.cost_elem_(X, Y), lambda l: l)[0])
         except:
             return (None)
-    
+
     def fit_(self, X, Y, learning_rate = 0.001, n_cycle = 10000):
         """
         Description:
@@ -108,7 +122,7 @@ class MyLinearRegression():
         """
         if (not s.elements(self.theta) or not s.elements(X) or not s.elements(Y)):
             return (None)
-        for _ in range(n_cycle):
+        for _ in progressbar(range(n_cycle), "fit_cycles: ", 40):
             pred = self.predict_(X)
             diff = np.subtract(pred, Y)
             h = np.append(np.full((len(X), 1), fill_value=1), X, axis = 1)
@@ -119,7 +133,7 @@ class MyLinearRegression():
 if __name__ == "__main__":
     mylr = MyLinearRegression([[1.], [1.], [1.], [1.], [1]])
     X = np.array([[1., 1., 2., 3.],
-                  [5., 8., 13., 21.], 
+                  [5., 8., 13., 21.],
                   [34., 55., 89., 144.]])
     Y = np.array([[23.], [48.], [218.]])
     print(mylr.predict_(X))
